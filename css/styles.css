@@ -1,0 +1,54 @@
+body{
+  margin: 0px;
+}
+.header{
+  padding: 1rem;
+  background-color: #01916D;
+  color: #fff;
+}
+h1{
+  padding-left: 2rem;
+}
+
+.sticky{
+  top: 0px;
+  position: sticky;
+  background-color: #FFF;
+}
+.section{
+  margin: 2rem;
+  padding-bottom: 2rem;
+
+  border-bottom: solid 2rem #01916D;
+}
+h2{
+  color: #01916D;
+}
+a{
+  color: #01916D;
+}
+
+label{
+  color: #01916D;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.animBTN{
+  padding: 1rem;
+  margin: 0.3rem;
+  border-width: 0px;
+  background-color: #01916D;
+  color: #fff;
+}
+.disabled{
+  background-color: #CCC;
+}
+.zip{
+  margin-left:1rem;
+}
+#id-list{
+  max-width: 1200px;
+  margin: auto;
+}

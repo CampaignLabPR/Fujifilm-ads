@@ -49,7 +49,7 @@ for(j=0;j<lottieFiles.length;j++){
   }
   currentSection = lottieFiles[j].section;
   sectionHtml +=`
-    <button id='id-${lottieFiles[j].name}' size='${lottieFiles[j].section}' class='btn-${lottieFiles[j].name} ${className}'>${lottieFiles[j].name}</button>
+    <button id='id-${lottieFiles[j].name}' size='${lottieFiles[j].section}' zip='${lottieFiles[j].zip}' class='btn-${lottieFiles[j].name} ${className}'>${lottieFiles[j].name}</button>
   `;
 }
 
@@ -64,8 +64,16 @@ for (let element of document.getElementsByClassName(className)){
      //console.log(e);
      let txt  = element.innerText;
      let size = element.getAttribute("size");
+     let zip  = element.getAttribute("zip");
+
      document.getElementById(`id-${size}-player`).load(`"./json/${txt}.json"`);
      document.getElementById(`id-${size}-name`).innerHTML = txt;
-     document.getElementById(`id-${size}-title`).innerHTML = `<a href="./json/banner/${txt}.zip">[zip file]</a>`;
+     if(zip != 'undefined'){
+       document.getElementById(`id-${size}-title`).innerHTML = `<a href="${zip}">[zip file]</a>`;
+     }
+     else {
+       document.getElementById(`id-${size}-title`).innerHTML = ``;
+     }
+
    });
 }

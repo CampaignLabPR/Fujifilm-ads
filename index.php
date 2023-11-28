@@ -19,15 +19,17 @@
   <?php
     function loadAnimationFiles(){
       $dir    = './json';
-      $files = glob($dir . DIRECTORY_SEPARATOR . "*.json");
-      $jsonFile = [];
-      $sizes = [];
-      $result = [];
+      $files  = glob($dir . DIRECTORY_SEPARATOR . "*.json");
+      $jsonFiles = [];
+
+      $pattern = "/([\w|-]+)(\.[a-z]{3,4})/i";
 
       foreach ($files as $file) {
         $json = file_get_contents($file);
         // Decode the JSON file
         $json_data = json_decode($json, false);
+        //Get name only
+        preg_match($pattern, $file, $filename);
         // Display data
         $json = new stdClass();
         $json->url      = $file;
@@ -35,13 +37,14 @@
         $json->width    = $json_data->w;
         $json->height   = $json_data->h;
         $json->section  = $json_data->w."x".$json_data->h;
-
-        if (!in_array($json->section, $sizes)) {
-            array_push($sizes, $json->section);
+        //Test if Zip exist base on name file
+        if(file_exists('./json/banner/'.$filename[1].'.zip')){
+          $json->zip   = './json/banner/'.$filename[1].'.zip';
         }
-        array_push($jsonFile, $json);
+        //Add to array
+        array_push($jsonFiles, $json);
       }
-      return $jsonFile;
+      return $jsonFiles;
     }
 
     $RESULT = loadAnimationFiles();

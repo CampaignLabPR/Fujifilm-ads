@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/styles.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="animList.js"></script>
+    <title></title>
+  </head>
+  <body>
+
+    <div class="header">
+        <h1>Fujifilm HOP ads v1</h1>
+    </div>
+    <div id="id-list"></div>
+
+  </body>
+
+  <script>
+
+
+  function loadDoc(file) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onload = function(e) {
+      if(e.currentTarget.readyState==4){
+        if(e.currentTarget.status != 200){return}
+        //expreguliere
+        let url = e.target.responseURL;
+        let reg = /json\/(.*)-([0-9]+x[0-9]+)-(.*)\.json/;
+        let found = url.match(reg);
+        if(found.length==4){
+          let id = `id-${found[2]}-${found[3]}`;
+          let currentId = document.getElementById(id);
+          if(currentId){
+            currentId.classList.remove("disabled");
+          }
+        }
+      }
+    }
+    xhttp.open("GET", `./json/${file}`);
+    xhttp.send();
+  }
+
+  let i=0,j=0,v=0;
+  let buttonHtml = "",sectionHtml="";
+  let className = "animBTN";
+
+  //  loop on SIZE
+  for(j=0;j<sizeList.length;j++){
+    let heightWidth = sizeList[j].split('x');
+    let width = heightWidth[0];
+    let height = heightWidth[1];
+
+    sectionHtml +=`
+    <div class="section">
+        <span>
+          <label id="id-${sizeList[j]}-name" for="">
+            ${sizeList[j]} Please select animation
+          </label>
+          <span id="id-${sizeList[j]}-title" class="zip"></span>
+        </span>
+        <lottie-player id="id-${sizeList[j]}-player" style="width:${width}px;height:${height}px;" loop controls autoplay></lottie-player>
+    `;
+    //LOOP ON ANIMATION
+    for (i=0;i<animList.length;i++){
+      for(v=0;v<version.length;v++){
+        let fileName = `${sizeList[j]}-${animList[i]}-${version[v]}`;
+        sectionHtml +=`
+          <button id='id-${fileName}' size='${sizeList[j]}' class='btn-${sizeList[j]} ${className} disabled'>${fileName}</button>
+        `;
+        loadDoc(`${pre}${fileName}.json`);
+      }
+    }
+    sectionHtml += `</div>`;
+  }
+
+  document.getElementById(`id-list`).innerHTML = sectionHtml;
+
+  for (let element of document.getElementsByClassName(className)){
+     element.addEventListener("click", function(e){
+       let txt  = element.innerText;
+       let size = element.getAttribute("size");
+       console.log(element.classList.value);
+       let disabled = element.classList.value.search(/disabled/);
+       if(disabled==-1){
+         document.getElementById(`id-${size}-player`).load(`"./json/${pre}${txt}.json"`);
+         document.getElementById(`id-${size}-name`).innerHTML = txt;
+         document.getElementById(`id-${size}-title`).innerHTML = `<a href="./json/banner/${pre}${txt}.zip">[zip file]</a>`;
+       }
+
+
+     });
+  }
+
+  </script>
+</html>

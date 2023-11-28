@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./css/styles.css">
      <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="animList.js"></script>
+    <!-- <script src="setup.js"></script> -->
     <title></title>
   </head>
   <body>
@@ -16,6 +16,47 @@
     <div id="id-list"></div>
 
   </body>
+
+  <?php
+    function loadAnimationFiles(){
+      $dir    = './json';
+      $files = glob($dir . DIRECTORY_SEPARATOR . "*.json");
+      $jsonFile = [];
+      $sizes = [];
+      $result = [];
+
+      foreach ($files as $file) {
+        $json = file_get_contents($file);
+        // Decode the JSON file
+        $json_data = json_decode($json, false);
+        // Display data
+        $json = new stdClass();
+        $json->url      = $file;
+        $json->name     = $json_data->nm;
+        $json->width    = $json_data->w;
+        $json->height   = $json_data->h;
+        $json->section  = $json_data->w."x".$json_data->h;
+
+        if (!in_array($json->section, $sizes)) {
+            array_push($sizes, $json->section);
+        }
+        array_push($jsonFile, $json);
+      }
+      return $jsonFile;
+    }
+    $RESULT = loadAnimationFiles();
+
+    //echo "\tvar lottieFiles=", json_encode($RESULT, JSON_UNESCAPED_SLASHES), "\n";
+
+    $animListFile = fopen("animList.js", "w") or die("Unable to open file!");
+    $content = "var lottieFiles=".json_encode($RESULT, JSON_UNESCAPED_SLASHES);
+    echo $animListFile;
+    fwrite($animListFile, $content);
+    fclose($animListFile);
+    echo "File created";
+  ?>
+
+  <!-- <script src="animList.js"></script>
 
   <script>
 
@@ -40,7 +81,7 @@
   }
   }
 
-  //console.log(listLottieFiles);
+  console.log(listLottieFiles);
 
   let i=0,j=0,v=0;
   let buttonHtml = "",sectionHtml="";
@@ -82,13 +123,19 @@
 
   for (let element of document.getElementsByClassName(className)){
      element.addEventListener("click", function(e){
+       //console.log(e);
        let txt  = element.innerText;
        let size = element.getAttribute("size");
-       document.getElementById(`id-${size}-player`).load(`"./json/${txt}.json"`);
-       document.getElementById(`id-${size}-name`).innerHTML = txt;
-       document.getElementById(`id-${size}-title`).innerHTML = `<a href="./json/banner/${txt}.zip">[zip file]</a>`;
+       //console.log(element.classList.value);
+       //let disabled = element.classList.value.search(/disabled/);
+       //if(disabled==-1){
+         document.getElementById(`id-${size}-player`).load(`"./json/${txt}.json"`);
+         document.getElementById(`id-${size}-name`).innerHTML = txt;
+         document.getElementById(`id-${size}-title`).innerHTML = `<a href="./json/banner/${txt}.zip">[zip file]</a>`;
+       //}
+
+
      });
   }
-
-  </script>
+  </script> -->
 </html>

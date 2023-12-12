@@ -1,1 +1,82 @@
-const lottieFiles=[{"url":"./json/00-300x250-HOP-CAPTURE-A.json","name":"00-300x250-HOP-CAPTURE-A","width":300,"height":250,"section":"300x250","zip":"./json/banner/00-300x250-HOP-CAPTURE-A.zip"},{"url":"./json/00-300x250-HOP-CAPTURE-B.json","name":"00-300x250-HOP-CAPTURE-B","width":300,"height":250,"section":"300x250","zip":"./json/banner/00-300x250-HOP-CAPTURE-B.zip"},{"url":"./json/00-300x250-HOP-QUIZ-A.json","name":"00-300x250-HOP-QUIZ-A","width":300,"height":250,"section":"300x250","zip":"./json/banner/00-300x250-HOP-QUIZ-A.zip"},{"url":"./json/00-300x250-HOP-QUIZ-B.json","name":"00-300x250-HOP-QUIZ-B","width":300,"height":250,"section":"300x250","zip":"./json/banner/00-300x250-HOP-QUIZ-B.zip"}]
+const lottieFiles=[
+{
+  "url":"./json/00-300x250-HOP-CAPTURE-A.json",
+  "name":"00-300x250-HOP-CAPTURE-A","width":300,
+  "height":250,"section":"300x250",
+  "zip":"./json/banner/00-300x250-HOP-CAPTURE-A.zip"
+},
+
+  {
+    "url":"./json/00-300x250-HOP-CAPTURE-B.json",
+  "name":"00-300x250-HOP-CAPTURE-B",
+  "width":300,
+  "height":250,
+  "section":"300x250",
+  "zip":"./json/banner/00-300x250-HOP-CAPTURE-B.zip"
+},
+
+{
+  "url":"./json/00-300x250-HOP-QUIZ-A.json",
+  "name":"00-300x250-HOP-QUIZ-A",
+  "width":300,
+  "height":250,
+  "section":"300x250",
+  "zip":"./json/banner/00-300x250-HOP-QUIZ-A.zip"
+},
+{
+  "url":"./json/00-300x250-HOP-QUIZ-B.json",
+  "name":"00-300x250-HOP-QUIZ-B",
+  "width":300,
+  "height":250,
+  "section":"300x250",
+  "zip":"./json/banner/00-300x250-HOP-QUIZ-B.zip"
+},
+{
+  "url":"./json/160x600-HOP-CAPTURE-A.json",
+  "name":"160x600-HOP-CAPTURE-A",
+  "width":160,
+  "height":600,
+  "section":"160x600",
+  "zip":"./json/banner/160x600-HOP-CAPTURE-A.zip"
+},
+{
+  "url":"./json/160x600-HOP-QUIZ-A.json",
+  "name":"160x600-HOP-QUIZ-A",
+  "width":160,
+  "height":600,
+  "section":"160x600",
+  "zip":"./json/banner/160x600-HOP-QUIZ-A.zip"
+},
+{
+  "url":"./json/728x90-HOP-CAPTURE-A.json",
+  "name":"728x90-HOP-CAPTURE-A",
+  "width":728,
+  "height":90,
+  "section":"728x90",
+  "zip":"./json/banner/728x90-HOP-CAPTURE-A.zip"
+},
+{
+  "url":"./json/728x90-HOP-QUIZ-A.json",
+  "name":"728x90-HOP-QUIZ-A",
+  "width":728,
+  "height":90,
+  "section":"728x90",
+  "zip":"./json/banner/728x90-HOP-QUIZ-A.zip"
+},
+{
+  "url":"./json/970x250-HOP-CAPTURE-A.json",
+  "name":"970x250-HOP-CAPTURE-A",
+  "width":970,
+  "height":250,
+  "section":"970x250",
+  "zip":"./json/banner/970x250-HOP-CAPTURE-A.zip"
+},
+{
+  "url":"./json/970x250-HOP-QUIZ-A.json",
+  "name":"970x250-HOP-QUIZ-A",
+  "width":970,
+  "height":250,
+  "section":"970x250",
+  "zip":"./json/banner/970x250-HOP-QUIZ-A.zip"
+},
+]
